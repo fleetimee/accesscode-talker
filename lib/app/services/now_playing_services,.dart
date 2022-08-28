@@ -12,7 +12,7 @@ class NowPlayingServices {
   Future<NowPlaying> fetchNowPlaying() async {
     final response = await httpClient.get(Uri.parse(apiUrl));
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
+      Map<String, dynamic> data = jsonDecode(response.body);
       debugPrint(data.toString());
       return NowPlaying.fromJson(data);
     } else {
