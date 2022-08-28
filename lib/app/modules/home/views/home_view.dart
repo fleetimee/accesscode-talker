@@ -55,6 +55,21 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 15,
+                itemBuilder: (BuildContext context, int index) => const Card(
+                  child: Center(
+                    child: Text('Dummy Card Text'),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
