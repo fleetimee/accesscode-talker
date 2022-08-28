@@ -145,13 +145,11 @@ class HomeView extends GetView<HomeController> {
                 ),
                 SizedBox(
                   width: 200,
-                  child: Expanded(
-                    child: Text(
-                      controller.trendingMoviews[index].title,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  child: Text(
+                    controller.trendingMoviews[index].title,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -200,24 +198,27 @@ class HomeView extends GetView<HomeController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      shadowColor: Colors.black,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        // child: Image.network(
-                        //   'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
-                        //   fit: BoxFit.cover,
-                        //   height: 300,
-                        // ),
-                        child: FancyShimmerImage(
-                            imageUrl:
-                                'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
-                            width: 200,
-                            height: 300,
-                            boxFit: BoxFit.cover),
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed(
+                          Routes.DETAIL_MOVIE,
+                          arguments: controller.nowPlayingMovies[index],
+                        );
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadowColor: Colors.black,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: FancyShimmerImage(
+                              imageUrl:
+                                  'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
+                              width: 200,
+                              height: 300,
+                              boxFit: BoxFit.cover),
+                        ),
                       ),
                     ),
                     const SizedBox(

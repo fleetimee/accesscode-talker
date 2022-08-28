@@ -23,7 +23,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_MOVIE,
-      page: () => const DetailMovieView(),
+      page: () => DetailMovieView(),
       binding: DetailMovieBinding(),
       transition: Transition.cupertino,
     ),
