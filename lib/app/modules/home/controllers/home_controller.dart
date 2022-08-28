@@ -1,4 +1,5 @@
 import 'package:fleetime/app/models/trending.dart';
+import 'package:fleetime/app/services/now_playing_services,.dart';
 import 'package:fleetime/app/services/trending_services.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     fetchTrending();
+    fetchNowPlaying();
     super.onInit();
   }
 
@@ -32,5 +34,17 @@ class HomeController extends GetxController {
     );
   }
 
+  void fetchNowPlaying() {
+    Future.delayed(
+      const Duration(seconds: 1),
+      () async {
+        final api = await NowPlayingServices().fetchNowPlaying();
+        final listResult = api.results;
+        nowPlayingMovies = listResult!;
+      },
+    );
+  }
+
   List trendingMoviews = <Results>[];
+  List nowPlayingMovies = <Results>[];
 }

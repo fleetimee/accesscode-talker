@@ -2,6 +2,7 @@ import 'package:fleetime/app/common/style.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -58,65 +59,81 @@ class HomeView extends GetView<HomeController> {
             Expanded(
               child: GetBuilder<HomeController>(
                 init: HomeController(),
-                builder: (_) => ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 7,
-                  itemBuilder: (context, index) => Column(
-                    children: [
-                      Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12), // <-- Radius
-                        ),
-                        shadowColor: Colors.black,
-                        child: Image.network(
-                          'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
-                          fit: BoxFit.cover,
-                          height: 300,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-
-                      Text(
-                        controller.trendingMoviews[index].title,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: true,
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      // IMDB Rating
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: ratingBintang,
-                            size: 30,
+                builder: (_) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (context, index) => Column(
+                      children: [
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          Text(
-                            '${controller.trendingMoviews[index].voteAverage} / 10',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                          shadowColor: Colors.black,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.network(
+                              'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
+                              fit: BoxFit.cover,
+                              height: 250,
                             ),
                           ),
-                        ],
-                      ),
-                    ],
+                          // child: CachedNetworkImage(
+                          //   imageUrl:
+                          //       'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
+                          //   fit: BoxFit.cover,
+                          //   progressIndicatorBuilder:
+                          //       (context, url, downloadProgress) =>
+                          //           CircularProgressIndicator(
+                          //               value: downloadProgress.progress),
+                          //   errorWidget: (context, url, error) =>
+                          //       const Icon(Icons.error),
+                          //   height: 250,
+                          // ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          controller.trendingMoviews[index].title,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Icon(
+                              Icons.star,
+                              color: ratingBintang,
+                              size: 30,
+                            ),
+                            const SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              '${controller.trendingMoviews[index].voteAverage.toStringAsFixed(1)} / 10',
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -143,61 +160,84 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             const SizedBox(
-              height: 16.0,
+              height: 6.0,
             ),
             Expanded(
               child: GetBuilder<HomeController>(
                 init: HomeController(),
-                builder: (_) => ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => Column(
-                    children: [
-                      Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12), // <-- Radius
-                        ),
-                        shadowColor: Colors.black,
-                        child: Image.network(
-                          'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
-                          fit: BoxFit.cover,
-                          height: 300,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      Text(
-                        controller.trendingMoviews[index].title,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: true,
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      // IMDB Rating
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: ratingBintang,
-                            size: 30,
-                          ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          Text(
-                            '${controller.trendingMoviews[index].voteAverage} / 10',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                builder: (_) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) => Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: [
+                            Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(500),
+                              ),
+                              shadowColor: Colors.black,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
+                                  fit: BoxFit.cover,
+                                  height: 300,
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  controller.nowPlayingMovies[index].title,
+                                  maxLines: 2,
+                                  strutStyle: const StrutStyle(
+                                    forceStrutHeight: true,
+                                  ),
+                                  textWidthBasis: TextWidthBasis.longestLine,
+                                  overflow: TextOverflow.fade,
+                                  textScaleFactor: 1.0,
+                                  softWrap: true,
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                // IMDB Rating
+                                const Icon(
+                                  Icons.star,
+                                  color: ratingBintang,
+                                  size: 30,
+                                ),
+                                // Runtime
+                                Text(
+                                  DateFormat('dd MMMM yyyy').format(
+                                    DateTime.parse(controller
+                                        .nowPlayingMovies[index].releaseDate
+                                        .toString()),
+                                  ),
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
