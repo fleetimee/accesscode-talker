@@ -38,20 +38,25 @@ class HomeView extends GetView<HomeController> {
               padding: const EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     'Now Showing',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    'See More',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.blueGrey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // <-- Radius
+                      ),
                     ),
+                    onPressed: () {
+                      controller.fetchTrending();
+                    },
+                    child: const Text("See More"),
                   ),
                 ],
               ),
