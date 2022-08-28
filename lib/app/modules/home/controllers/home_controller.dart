@@ -45,6 +45,7 @@ class HomeController extends GetxController {
     );
   }
 
-  List trendingMoviews = <Results>[];
-  List nowPlayingMovies = <Results>[];
+  List trendingMoviews = <Results>[].obs;
+
+  List nowPlayingMovies = <Results>[].obs;
 }

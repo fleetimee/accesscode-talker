@@ -1,4 +1,3 @@
-import 'package:fleetime/app/theme/dark.dart';
 import 'package:fleetime/app/theme/light.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +25,6 @@ void main() {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: lightTheme,
-      darkTheme: darkTheme,
     ),
   );
 }

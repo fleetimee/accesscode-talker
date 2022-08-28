@@ -110,24 +110,21 @@ class HomeView extends GetView<HomeController> {
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: controller.trendingMoviews.length,
             itemBuilder: (context, index) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 2),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    shadowColor: Colors.black,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
-                        fit: BoxFit.cover,
-                        height: 250,
-                      ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  shadowColor: Colors.black,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
+                      fit: BoxFit.cover,
+                      height: 250,
                     ),
                   ),
                 ),
@@ -136,12 +133,9 @@ class HomeView extends GetView<HomeController> {
                 ),
                 Text(
                   controller.trendingMoviews[index].title,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: true,
-                  textAlign: TextAlign.left,
                   style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 Row(
@@ -180,7 +174,7 @@ class HomeView extends GetView<HomeController> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: 5,
+            itemCount: controller.nowPlayingMovies.length,
             itemBuilder: (context, index) => Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,11 +185,11 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     Card(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(500),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       shadowColor: Colors.black,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(10),
                         child: Image.network(
                           'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
                           fit: BoxFit.cover,
@@ -222,23 +216,49 @@ class HomeView extends GetView<HomeController> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          // IMDB Rating
-                          const Icon(
-                            Icons.star,
-                            color: ratingBintang,
-                            size: 30,
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                color: ratingBintang,
+                                size: 30,
+                              ),
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                '${controller.nowPlayingMovies[index].voteAverage.toStringAsFixed(1)} / 10 IMDb',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              ),
+                            ],
                           ),
-                          // Runtime
-                          Text(
-                            DateFormat('dd MMMM yyyy').format(
-                              DateTime.parse(controller
-                                  .nowPlayingMovies[index].releaseDate
-                                  .toString()),
-                            ),
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Row(
+                            children: [
+                              // Calendar icon
+                              const Icon(
+                                Icons.calendar_month,
+                                color: Colors.grey,
+                                size: 30,
+                              ),
+                              const SizedBox(
+                                width: 5.0,
+                              ),
+
+                              Text(
+                                DateFormat('dd MMMM yyyy').format(
+                                  DateTime.parse(controller
+                                      .nowPlayingMovies[index].releaseDate
+                                      .toString()),
+                                ),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
