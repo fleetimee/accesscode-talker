@@ -1,5 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:fleetime/app/common/style.dart';
+import 'package:fleetime/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -115,24 +116,27 @@ class HomeView extends GetView<HomeController> {
             itemBuilder: (context, index) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  shadowColor: Colors.black,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    // child: Image.network(
-                    //   'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
-                    //   fit: BoxFit.cover,
-                    //   height: 250,
-                    // ),
-                    child: FancyShimmerImage(
-                      width: 175,
-                      height: 275,
-                      imageUrl:
-                          'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
-                      boxFit: BoxFit.cover,
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(
+                      Routes.DETAIL_MOVIE,
+                      arguments: controller.trendingMoviews[index],
+                    );
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.black,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: FancyShimmerImage(
+                        width: 175,
+                        height: 275,
+                        imageUrl:
+                            'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
+                        boxFit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
