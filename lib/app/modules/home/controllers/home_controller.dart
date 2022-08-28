@@ -17,32 +17,26 @@ class HomeController extends GetxController {
 
   void increment() => count.value++;
 
-  void fetchTrending() {
+  void fetchTrending() async {
     isTrendingLoading.value = true;
 
-    Future.delayed(
-      const Duration(seconds: 1),
-      () async {
-        final api = await TrendingServices().fetchTrending();
+    final api = await TrendingServices().fetchTrending();
 
-        final listResult = api.results;
+    final listResult = api.results;
 
-        trendingMoviews = listResult!;
+    trendingMoviews = listResult!;
 
-        isTrendingLoading.value = false;
-      },
-    );
+    isTrendingLoading.value = false;
+
+    update();
   }
 
-  void fetchNowPlaying() {
-    Future.delayed(
-      const Duration(seconds: 1),
-      () async {
-        final api = await NowPlayingServices().fetchNowPlaying();
-        final listResult = api.results;
-        nowPlayingMovies = listResult!;
-      },
-    );
+  void fetchNowPlaying() async {
+    final api = await NowPlayingServices().fetchNowPlaying();
+    final listResult = api.results;
+    nowPlayingMovies = listResult!;
+
+    update();
   }
 
   List trendingMoviews = <Results>[].obs;

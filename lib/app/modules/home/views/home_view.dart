@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:fleetime/app/common/style.dart';
 import 'package:flutter/material.dart';
 
@@ -121,21 +122,33 @@ class HomeView extends GetView<HomeController> {
                   shadowColor: Colors.black,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
-                      fit: BoxFit.cover,
-                      height: 250,
+                    // child: Image.network(
+                    //   'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
+                    //   fit: BoxFit.cover,
+                    //   height: 250,
+                    // ),
+                    child: FancyShimmerImage(
+                      width: 175,
+                      height: 275,
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/w500/${controller.trendingMoviews[index].posterPath}',
+                      boxFit: BoxFit.cover,
                     ),
                   ),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
-                Text(
-                  controller.trendingMoviews[index].title,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: 200,
+                  child: Expanded(
+                    child: Text(
+                      controller.trendingMoviews[index].title,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
                 Row(
@@ -190,11 +203,17 @@ class HomeView extends GetView<HomeController> {
                       shadowColor: Colors.black,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
-                          fit: BoxFit.cover,
-                          height: 300,
-                        ),
+                        // child: Image.network(
+                        //   'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
+                        //   fit: BoxFit.cover,
+                        //   height: 300,
+                        // ),
+                        child: FancyShimmerImage(
+                            imageUrl:
+                                'https://image.tmdb.org/t/p/w500/${controller.nowPlayingMovies[index].posterPath}',
+                            width: 200,
+                            height: 300,
+                            boxFit: BoxFit.cover),
                       ),
                     ),
                     const SizedBox(
@@ -266,7 +285,7 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 16,
                 ),
               ],
             ),
