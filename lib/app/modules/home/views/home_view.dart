@@ -120,7 +120,8 @@ class HomeView extends GetView<HomeController> {
                   onTap: () {
                     Get.toNamed(
                       Routes.DETAIL_MOVIE,
-                      arguments: controller.trendingMoviews[index],
+                      // Get Id Movie
+                      arguments: controller.trendingMoviews[index].id,
                     );
                   },
                   child: Card(
