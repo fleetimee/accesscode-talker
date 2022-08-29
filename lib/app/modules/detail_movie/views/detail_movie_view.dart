@@ -288,19 +288,64 @@ class DetailMovieView extends GetView<DetailMovieController> {
                                       children: [
                                         CircleAvatar(
                                           radius: 50,
-                                          backgroundImage: NetworkImage(
-                                            'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
+                                          backgroundColor: Colors.grey[200],
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            child: FancyShimmerImage(
+                                              imageUrl:
+                                                  'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
+                                              width: 100,
+                                              height: 100,
+                                              boxFit: BoxFit.cover,
+                                              errorWidget: Container(
+                                                width: 100,
+                                                height: 100,
+                                                color: Colors.grey[200],
+                                                child: Text(
+                                                  // Substring to show only first name
+
+                                                  '${snapshot.data.cast[index].name.substring(0, 1)}',
+                                                  style: const TextStyle(
+                                                    fontSize: 50,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Color.fromRGBO(
+                                                        17, 14, 71, 100),
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                         const SizedBox(
                                           width: 50,
                                         ),
-                                        Text(
-                                          '${snapshot.data.cast[index].name}',
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.normal,
-                                          ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${snapshot.data.cast[index].name}',
+                                              style: const TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            SizedBox(
+                                              width: 200,
+                                              child: Text(
+                                                'As ${snapshot.data.cast[index].character}',
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),

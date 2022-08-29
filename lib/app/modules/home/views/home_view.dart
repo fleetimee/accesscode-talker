@@ -201,10 +201,10 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Get.toNamed(
-                          Routes.DETAIL_MOVIE,
-                          arguments: controller.nowPlayingMovies[index],
-                        );
+                        Get.toNamed(Routes.DETAIL_MOVIE,
+
+                            // Get Id Movie
+                            arguments: controller.nowPlayingMovies[index].id);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
