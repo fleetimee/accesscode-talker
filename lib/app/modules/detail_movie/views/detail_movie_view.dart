@@ -54,6 +54,7 @@ class DetailMovieView extends GetView<DetailMovieController> {
                 ),
                 SliverToBoxAdapter(
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
@@ -164,7 +165,19 @@ class DetailMovieView extends GetView<DetailMovieController> {
                                   //   DateTime.parse(
                                   //       snapshot.data.releaseDate.toString()),
                                   // ),
-                                  '${snapshot.data.runtime} min',
+                                  // Convert minutes to hours minutes
+                                  // DateFormat('HH:mm').format(
+                                  //   DateTime.fromMillisecondsSinceEpoch(
+                                  //       snapshot.data.runtime * 60),
+                                  // ),
+
+                                  // Convert minutes to hours
+                                  // DateFormat('HH:mm').format(
+                                  //   DateTime.(
+                                  //       snapshot.data.runtime * 60 % 60),
+                                  // ),
+                                  controller.convertMinutesToHours(
+                                      snapshot.data.runtime),
                                   style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -269,43 +282,167 @@ class DetailMovieView extends GetView<DetailMovieController> {
                         future: CastService().fetchCast(data),
                         builder: (context, AsyncSnapshot snapshot) {
                           if (snapshot.hasData) {
-                            return Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 50,
-                              ),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: snapshot.data.cast.length,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage: NetworkImage(
-                                            'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
+                            return Flexible(
+                              fit: FlexFit.loose,
+                              child: Container(
+                                height: 300,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 50,
+                                ),
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: snapshot.data.cast.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 10,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              // CircleAvatar(
+                                              //   radius: 50,
+                                              //   backgroundColor:
+                                              //       Colors.grey[200],
+                                              //   child: ClipRRect(
+                                              //     borderRadius:
+                                              //         BorderRadius.circular(50),
+                                              //     child: FancyShimmerImage(
+                                              //       imageUrl:
+                                              //           'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
+                                              //       width: 200,
+                                              //       height: 200,
+                                              //       boxFit: BoxFit.cover,
+                                              //       errorWidget: Container(
+                                              //         width: 100,
+                                              //         height: 100,
+                                              //         color: Colors.grey[200],
+                                              //         child: Text(
+                                              //           // Substring to show only first name
+
+                                              //           '${snapshot.data.cast[index].name.substring(0, 1)}',
+                                              //           style: const TextStyle(
+                                              //             fontSize: 50,
+                                              //             fontWeight:
+                                              //                 FontWeight.bold,
+                                              //             color: Color.fromRGBO(
+                                              //                 17, 14, 71, 100),
+                                              //           ),
+                                              //           textAlign:
+                                              //               TextAlign.center,
+                                              //         ),
+                                              //       ),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              Card(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                shadowColor: Colors.black,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: FancyShimmerImage(
+                                                    imageUrl:
+                                                        'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
+                                                    width: 150,
+                                                    height: 150,
+                                                    boxFit: BoxFit.cover,
+                                                    errorWidget:
+                                                        FancyShimmerImage(
+                                                      imageUrl:
+                                                          'https://i.pinimg.com/474x/56/51/92/565192fc7848fbb8abd85136497a095b.jpg',
+                                                      width: 150,
+                                                      height: 150,
+                                                      boxFit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+
+                                              // Column(
+                                              //   crossAxisAlignment:
+                                              //       CrossAxisAlignment.start,
+                                              //   children: [
+                                              //     Text(
+                                              //       '${snapshot.data.cast[index].name}',
+                                              //       style: const TextStyle(
+                                              //         fontSize: 20,
+                                              //         fontWeight: FontWeight.normal,
+                                              //       ),
+                                              //     ),
+                                              //     const SizedBox(
+                                              //       height: 5.0,
+                                              //     ),
+                                              //     SizedBox(
+                                              //       width: 200,
+                                              //       child: Text(
+                                              //         'As ${snapshot.data.cast[index].character}',
+                                              //         style: const TextStyle(
+                                              //           fontSize: 20,
+                                              //           fontWeight:
+                                              //               FontWeight.normal,
+                                              //         ),
+                                              //       ),
+                                              //     ),
+                                              //   ],
+                                              // ),
+                                            ],
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          width: 50,
-                                        ),
-                                        Text(
-                                          '${snapshot.data.cast[index].name}',
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.normal,
+                                          const SizedBox(
+                                            height: 10,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                            ),
+                                            child: SizedBox(
+                                              width: 150,
+                                              child: Text(
+                                                '${snapshot.data.cast[index].name}',
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: blueBanget,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5.0,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 10,
+                                            ),
+                                            child: SizedBox(
+                                              width: 150,
+                                              child: Text(
+                                                'as ${snapshot.data.cast[index].character}',
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             );
                           } else {
