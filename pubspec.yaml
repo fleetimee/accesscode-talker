@@ -6,8 +6,8 @@ environment:
   sdk: ">=2.17.6 <3.0.0"
 
 dependencies:
- 
   cupertino_icons: ^1.0.2
+  empty_widget: ^0.0.5
   fancy_shimmer_image: ^2.0.2
   flutter:
     sdk: flutter
@@ -15,8 +15,10 @@ dependencies:
   google_fonts: ^3.0.1
   http: ^0.13.5
   intl: ^0.17.0
+  modal_bottom_sheet: ^2.1.0
   responsive_framework: ^0.2.0
   tmdb_api: ^2.1.4
+  we_slide: ^2.3.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

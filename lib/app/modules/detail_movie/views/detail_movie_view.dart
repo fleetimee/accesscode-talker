@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:fleetime/app/common/style.dart';
+import 'package:fleetime/app/routes/app_pages.dart';
 import 'package:fleetime/app/services/cast_services.dart';
 import 'package:fleetime/app/services/details_movie_services.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +16,7 @@ import '../controllers/detail_movie_controller.dart';
 class DetailMovieView extends GetView<DetailMovieController> {
   DetailMovieView({Key? key}) : super(key: key);
 
-  final data = Get.arguments;
+  final id = Get.arguments;
 
   List<Widget> genres = [];
 
@@ -21,7 +24,7 @@ class DetailMovieView extends GetView<DetailMovieController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: MovieDetailsService().fetchMovieDetails(data),
+        future: MovieDetailsService().fetchMovieDetails(id),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return CustomScrollView(
@@ -279,13 +282,13 @@ class DetailMovieView extends GetView<DetailMovieController> {
                       ),
 
                       FutureBuilder(
-                        future: CastService().fetchCast(data),
+                        future: CastService().fetchCast(id),
                         builder: (context, AsyncSnapshot snapshot) {
                           if (snapshot.hasData) {
                             return Flexible(
                               fit: FlexFit.loose,
                               child: Container(
-                                height: 300,
+                                height: 350,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 50,
                                 ),
@@ -306,63 +309,41 @@ class DetailMovieView extends GetView<DetailMovieController> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceAround,
                                             children: [
-                                              // CircleAvatar(
-                                              //   radius: 50,
-                                              //   backgroundColor:
-                                              //       Colors.grey[200],
-                                              //   child: ClipRRect(
-                                              //     borderRadius:
-                                              //         BorderRadius.circular(50),
-                                              //     child: FancyShimmerImage(
-                                              //       imageUrl:
-                                              //           'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
-                                              //       width: 200,
-                                              //       height: 200,
-                                              //       boxFit: BoxFit.cover,
-                                              //       errorWidget: Container(
-                                              //         width: 100,
-                                              //         height: 100,
-                                              //         color: Colors.grey[200],
-                                              //         child: Text(
-                                              //           // Substring to show only first name
-
-                                              //           '${snapshot.data.cast[index].name.substring(0, 1)}',
-                                              //           style: const TextStyle(
-                                              //             fontSize: 50,
-                                              //             fontWeight:
-                                              //                 FontWeight.bold,
-                                              //             color: Color.fromRGBO(
-                                              //                 17, 14, 71, 100),
-                                              //           ),
-                                              //           textAlign:
-                                              //               TextAlign.center,
-                                              //         ),
-                                              //       ),
-                                              //     ),
-                                              //   ),
-                                              // ),
-                                              Card(
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                shadowColor: Colors.black,
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  child: FancyShimmerImage(
-                                                    imageUrl:
-                                                        'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
-                                                    width: 150,
-                                                    height: 150,
-                                                    boxFit: BoxFit.cover,
-                                                    errorWidget:
-                                                        FancyShimmerImage(
+                                              InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(
+                                                      Routes.DETAIL_PERSON,
+                                                      arguments: snapshot
+                                                          .data.cast[index].id);
+                                                  log(snapshot
+                                                      .data.cast[index].id
+                                                      .toString());
+                                                },
+                                                child: Card(
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                  shadowColor: Colors.black,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: FancyShimmerImage(
                                                       imageUrl:
-                                                          'https://i.pinimg.com/474x/56/51/92/565192fc7848fbb8abd85136497a095b.jpg',
+                                                          'https://image.tmdb.org/t/p/w500/${snapshot.data.cast[index].profilePath}',
                                                       width: 150,
                                                       height: 150,
                                                       boxFit: BoxFit.cover,
+                                                      errorWidget:
+                                                          FancyShimmerImage(
+                                                        imageUrl:
+                                                            'https://i.pinimg.com/474x/56/51/92/565192fc7848fbb8abd85136497a095b.jpg',
+                                                        width: 150,
+                                                        height: 150,
+                                                        boxFit: BoxFit.cover,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
