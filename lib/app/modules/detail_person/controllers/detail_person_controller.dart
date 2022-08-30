@@ -19,4 +19,20 @@ class DetailPersonController extends GetxController {
       update();
     });
   }
+
+  String convertBirtdayToAge(String birthday) {
+    final date = DateTime.parse(birthday);
+    final now = DateTime.now();
+    final difference = now.difference(date);
+    final age = difference.inDays ~/ 365;
+    return '$age years old';
+  }
+
+  String parseJenisKelamin(String jenisKelamin) {
+    if (jenisKelamin == '2') {
+      return 'Male';
+    } else {
+      return 'Female';
+    }
+  }
 }

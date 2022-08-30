@@ -5,10 +5,12 @@ import 'package:fleetime/app/common/style.dart';
 import 'package:fleetime/app/routes/app_pages.dart';
 import 'package:fleetime/app/services/cast_services.dart';
 import 'package:fleetime/app/services/details_movie_services.dart';
+import 'package:fleetime/app/services/video.services.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../controllers/detail_movie_controller.dart';
 
@@ -19,6 +21,14 @@ class DetailMovieView extends GetView<DetailMovieController> {
   final id = Get.arguments;
 
   List<Widget> genres = [];
+
+  final YoutubePlayerController _controller = YoutubePlayerController(
+    flags: const YoutubePlayerFlags(
+      autoPlay: true,
+      mute: true,
+    ),
+    initialVideoId: '',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -164,21 +174,6 @@ class DetailMovieView extends GetView<DetailMovieController> {
                                   height: 5.0,
                                 ),
                                 Text(
-                                  // DateFormat('dd MMMM yyyy').format(
-                                  //   DateTime.parse(
-                                  //       snapshot.data.releaseDate.toString()),
-                                  // ),
-                                  // Convert minutes to hours minutes
-                                  // DateFormat('HH:mm').format(
-                                  //   DateTime.fromMillisecondsSinceEpoch(
-                                  //       snapshot.data.runtime * 60),
-                                  // ),
-
-                                  // Convert minutes to hours
-                                  // DateFormat('HH:mm').format(
-                                  //   DateTime.(
-                                  //       snapshot.data.runtime * 60 % 60),
-                                  // ),
                                   controller.convertMinutesToHours(
                                       snapshot.data.runtime),
                                   style: const TextStyle(
@@ -256,7 +251,8 @@ class DetailMovieView extends GetView<DetailMovieController> {
                           style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.grey),
+                              color: Colors.grey,
+                              height: 1.5),
                         ),
                       ),
                       const SizedBox(
@@ -432,7 +428,78 @@ class DetailMovieView extends GetView<DetailMovieController> {
                             );
                           }
                         },
-                      )
+                      ),
+
+                      FutureBuilder(
+                        future: VideoServices().fetchVideo(id),
+                        builder: (context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasData) {
+                            return Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 50,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Videos',
+                                    style: GoogleFonts.merriweather(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color:
+                                          const Color.fromRGBO(17, 14, 71, 100),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 500,
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: snapshot.data.results.length,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              // Make video thumbnail
+                                              GestureDetector(
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: FancyShimmerImage(
+                                                    imageUrl:
+                                                        'https://img.youtube.com/vi/${snapshot.data.results[index].key}/0.jpg',
+                                                    width: 500,
+                                                    height: 200,
+                                                    boxFit: BoxFit.cover,
+                                                    errorWidget:
+                                                        FancyShimmerImage(
+                                                      imageUrl:
+                                                          'https://i.pinimg.com/474x/56/51/92/565192fc7848fbb8abd85136497a095b.jpg',
+                                                      width: 150,
+                                                      height: 150,
+                                                      boxFit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      ),
                     ],
                   ),
                 )
