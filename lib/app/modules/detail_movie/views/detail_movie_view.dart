@@ -6,6 +6,7 @@ import 'package:fleetime/app/routes/app_pages.dart';
 import 'package:fleetime/app/services/cast_services.dart';
 import 'package:fleetime/app/services/details_movie_services.dart';
 import 'package:fleetime/app/services/video.services.dart';
+import 'package:fleetime/app/utils/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -464,6 +465,8 @@ class DetailMovieView extends GetView<DetailMovieController> {
                                             children: [
                                               // Make video thumbnail
                                               GestureDetector(
+                                                onTap: () => Utils.launchURL(
+                                                    'https://www.youtube.com/watch?v=${snapshot.data.results[index].key}'),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
