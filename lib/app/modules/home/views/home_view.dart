@@ -120,7 +120,8 @@ class HomeView extends GetView<HomeController> {
                   onTap: () {
                     Get.toNamed(
                       Routes.DETAIL_MOVIE,
-                      arguments: controller.trendingMoviews[index],
+                      // Get Id Movie
+                      arguments: controller.trendingMoviews[index].id,
                     );
                   },
                   child: Card(
@@ -145,11 +146,14 @@ class HomeView extends GetView<HomeController> {
                 ),
                 SizedBox(
                   width: 200,
-                  child: Text(
-                    controller.trendingMoviews[index].title,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      controller.trendingMoviews[index].title,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -200,10 +204,10 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Get.toNamed(
-                          Routes.DETAIL_MOVIE,
-                          arguments: controller.nowPlayingMovies[index],
-                        );
+                        Get.toNamed(Routes.DETAIL_MOVIE,
+
+                            // Get Id Movie
+                            arguments: controller.nowPlayingMovies[index].id);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(

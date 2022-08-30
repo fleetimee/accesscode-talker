@@ -8,6 +8,6 @@ ThemeData lightTheme = ThemeData(
         onPrimary: Colors.white,
       ),
   visualDensity: VisualDensity.adaptivePlatformDensity,
-  textTheme: GoogleFonts.poppinsTextTheme(),
+  textTheme: GoogleFonts.mulishTextTheme(),
   scaffoldBackgroundColor: Colors.white,
 );
