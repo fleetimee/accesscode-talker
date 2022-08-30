@@ -146,11 +146,14 @@ class HomeView extends GetView<HomeController> {
                 ),
                 SizedBox(
                   width: 200,
-                  child: Text(
-                    controller.trendingMoviews[index].title,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      controller.trendingMoviews[index].title,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

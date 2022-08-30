@@ -21,4 +21,10 @@ class DetailMovieController extends GetxController {
       update();
     });
   }
+
+  String convertMinutesToHours(int minutes) {
+    final hours = (minutes / 60).floor();
+    final remainingMinutes = minutes % 60;
+    return '${hours}h ${remainingMinutes}min';
+  }
 }
