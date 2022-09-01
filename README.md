@@ -15,7 +15,7 @@
   <p align="center">
     Fleetime merupakan aplikasi untuk melihat film - film yang sedang populer atau biasanya disebut Movie App, aplikasi ini dilombakan untuk mengikuti Mini Project Movie App yang diadakan oleh FUGI.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Lihat screenshot »</strong></a>
+    <a href="#screen"><strong>Lihat screenshot »</strong></a>
     <br />
     
   </p>
@@ -38,10 +38,12 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#screen">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#team-member">Contact</a></li>
+    <li><a href="#team-member">Team Member</a></li>
+    <li><a href="#panitia-fugi">Panitia</a></li>
     <li><a href="#package-yang-digunakan">Package yang digunakan</a></li>
+    <li><a href="#apa-itu-fugi-">Apa itu FUGI ?</a></li>
   </ol>
 </details>
 
@@ -164,14 +166,20 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Team Member
 
-Novian Andika - hello@fleetime.my.id
-Sandhika Rahardi (Kuldii Project) - [https://www.youtube.com/c/KuldiiProject](https://www.youtube.com/c/KuldiiProject)
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+- Novian Andika - hello@fleetime.my.id
+- Sandhika Rahardi (Kuldii Project) - [https://www.youtube.com/c/KuldiiProject](https://www.youtube.com/c/KuldiiProject)
+- Yuko
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGMENTS -->
+## Panitia FUGI
+
+- Saiful Bahri
+- Mas Fatih
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 ## Package yang digunakan
 
@@ -185,5 +193,19 @@ Beberapa package third party yang saya gunakan untuk menunjang pembuatan aplikas
 - [url_launcher](https://pub.dev/packages/url_launcher)
 - [get](https://pub.dev/packages/get)
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Apa itu FUGI ? 
+
+![1_mUaX1D5BsA9CHdyYla0F8g-removebg-preview](https://user-images.githubusercontent.com/45744788/187907527-e6c1bda0-0d25-416c-8cba-b06f79c1b643.png)
+
+
+FUGI adalah singkatan dari Flutter User Group Indonesia, FUGI sendiri ini merupakan suatu wadah komunitas untuk sharing sharing mengenai flutter yang berbasiskan grup WhatsApp.
+
+Jika tertarik kalian bisa gabung di sini dan langsung berinteraksi sesama member FUGI
+
+https://chat.whatsapp.com/DOmmRMP50Oc4eDd5eI7nav
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
