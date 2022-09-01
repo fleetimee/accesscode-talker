@@ -1,6 +1,3 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-
-
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
@@ -13,7 +10,7 @@
   <h3 align="center">Fleetime 🏃‍♂️⌛</h3>
 
   <p align="center">
-    Fleetime merupakan aplikasi untuk melihat film - film yang sedang populer atau biasanya disebut Movie App, aplikasi ini dilombakan untuk mengikuti Mini Project Movie App yang diadakan oleh FUGI.
+    Fleetime merupakan aplikasi untuk melihat film - film yang sedang populer atau biasanya disebut Movie App, aplikasi ini dilombakan untuk mengikuti Mini Project Movie App yang diadakan oleh <a href="#apa-itu-fugi-">FUGI</a>.
     <br />
     <a href="#screen"><strong>Lihat screenshot »</strong></a>
     <br />
@@ -145,9 +142,6 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
 </tr>
 </tbody>
 </table>
-
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
