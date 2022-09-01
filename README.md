@@ -1,5 +1,6 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
+
 <a name="readme-top"></a>
 
 <!--
@@ -68,20 +69,21 @@
 ## Tentang Aplikasi
 
 <div align="center">
-<img height="700" alt="iphone-12-pro-max--silver@2x" src="https://user-images.githubusercontent.com/45744788/185300952-7b9d5c24-4300-470f-8caa-9b4aed1d1edb.png">
+<img width="900" alt="iphone-12-pro-max--silver@2x" src="https://user-images.githubusercontent.com/45744788/187869597-1d8114ce-8ca9-44f1-9354-dcafe2ccfc18.png">
 </div>
 
 <br>
 
-Aplikasi Analisis Kredit Mikro yang dikembangkan menggunakan NodeJS dan Flutter, aplikasi ini bertujuan untuk memudahkan penginputan calon debitur serta aplikasi ini juga dapat langsung menganalisa diterima atau tidaknya debitur tersebut dengan berbagai parameter yang sudah dibuat.
+Fleetime adalah aplikasi untuk mencari film terbaru berbasis mobile yang dibuat dengan menggunakan Flutter, Untuk desainnya saya mengambil dari [Figma Community](https://www.figma.com/community/file/1054431643740926668), karena desainnya cuma 2 screen saja maka saya improvisasi didalam aplikasi sesuai selera saya sendiri. Untuk State Management Fleetime sendiri menggunakan GetX supaya pengembangan aplikasi lebih cepat dan tidak menggunakan banyak code boilerplate.
 
-Beberapa fitur aplikasi ini:
+Beberapa fitur Fleetime diantara lain :
 
-- Input Debitur
-- Analisa Debitur melalui beberapa parameter (Keuangan, Agunan, Karakter, dan Bisnis)
-- Dark / Light Mode 🌓
-- Print Dokumen sesuai debitur yang dipilih
-- Login User
+- Melihat film yang sedang populer
+- Melihat film yang sedang tayang di bioskop
+- Mencari film berdasarkan nama judul
+- Melihat detail film
+- Melihat detail actor atau actress
+- Melihat trailer film menggunakan url_launcher
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,6 +107,9 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
   https://docs.flutter.dev/get-started/install
   ```
 - Git
+  ```sh
+  https://git-scm.com/downloads
+  ```
 
 ### Installation
 
@@ -123,19 +128,20 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
 
 ## Screen
 
+
 <table>
 <thead>
 <tr>
 <th align="center">Splash</th>
-<th align="center">Home (Dark)</th>
-<th align="center">Input Debitur</th>
+<th align="center">Home</th>
+<th align="center">Detail Movie</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/185532156-96cba270-9bc3-4101-b3d8-36bd1025bfe3.png" height="500"/></td>
-<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/185534122-63a0a029-cec8-42e6-8268-671901f0d34d.png" height="500"/></td>
-<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/185534581-02163a77-d922-44fa-b566-5405c65575f0.png" height="500"/></td>
+<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/187876952-3b554467-a2f9-4d56-b105-c4dae64e6882.png" height="500"/></td>
+<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/187877124-754a9f01-02fe-4cbd-bfad-5034a96dd316.png" height="500"/></td>
+<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/187877307-704d6b3b-a133-4fcf-8800-e305bcfbcd1a.png" height="500"/></td>
 </tr>
 </tbody>
 </table>
@@ -143,19 +149,20 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
 <table>
 <thead>
 <tr>
-<th align="center">Search NIK</th>
-<th align="center">Analisa Karakter</th>
-<th align="center">Analisa Keuangan</th>
+<th align="center">Cast list & Trailer</th>
+<th align="center">Detail Person</th>
+<th align="center">Search Movie</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/185535302-920ddae2-cde3-4108-8925-f5e5b103bc4a.png" height="500"/></td>
-<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/185535533-5e4243c4-ecdd-4cb2-89c5-32281a83c93f.png" height="500"/></td>
-<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/185536719-39ab3cdf-f265-4368-b537-9c7f1df9efae.png" height="500"/></td>
+<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/187877595-8e4db779-1c44-49b0-a884-7de12490714d.png" height="500"/></td>
+<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/187877736-4158fcfe-8870-4951-8834-bb18f7f80701.png" height="500"/></td>
+<td align="center"><img alt="" src="https://user-images.githubusercontent.com/45744788/187877839-7ba784d8-37aa-48e8-86b8-b38289e93334.png" height="500"/></td>
 </tr>
 </tbody>
 </table>
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -165,15 +172,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
+- [ ] Add login menggunakan firebase
+- [ ] Add favorite film
+- [ ] Add Dark Mode 
+- [ ] Paginasi antar page film untuk melihat lebih banyak film
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -204,9 +207,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 
-## Contact
+## Team Member
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Novian Andika - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
