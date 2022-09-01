@@ -23,15 +23,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://user-images.githubusercontent.com/45744788/185291449-65209886-6580-48ed-89b3-a6770be8bd41.png" alt="Logo" width="250" height="250">
-
-
+    <img src="https://user-images.githubusercontent.com/45744788/187867110-d8e48200-7518-4695-a6b1-13e30b42657e.png" alt="Logo" width="250" height="250">
   </a>
 
-  <h3 align="center">Analisis Kredit Mikro (Front-end)</h3>
+  <h3 align="center">Fleetime 🏃‍♂️⌛</h3>
 
   <p align="center">
-    Mobile app untuk Analisis Kredit Mikro built with Flutter and NodeJS
+    Fleetime merupakan aplikasi untuk melihat film - film yang sedang populer atau biasanya disebut Movie App, aplikasi ini dilombakan untuk mengikuti Mini Project Movie App yang diadakan oleh FUGI.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Lihat screenshot »</strong></a>
     <br />
@@ -41,8 +39,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-
-  <summary>Table of Contents</summary>
+  <summary>Daftar Isi</summary>
   <ol>
     <li>
       <a href="#tentang-aplikasi">Tentang Aplikasi</a>
