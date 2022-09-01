@@ -1,7 +1,7 @@
 name: fleetime
 version: 1.0.0+1
 publish_to: none
-description: A new Flutter project.
+description: Projek membuat aplikasi movie dengan state management GetX.
 environment:
   sdk: ">=2.17.6 <3.0.0"
 
@@ -11,6 +11,8 @@ dependencies:
   fancy_shimmer_image: ^2.0.2
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.10.0
+  flutter_native_splash: ^2.2.8
   get: 4.6.5
   google_fonts: ^3.0.1
   http: ^0.13.5
@@ -29,3 +31,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+
+flutter_native_splash:
+  background_image: "assets/background.png"
+  image: "assets/icon.png"
+  branding: "assets/branding.png"
+
+android_12:
+  image: "assets/icon.png"

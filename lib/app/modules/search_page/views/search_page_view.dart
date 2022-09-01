@@ -147,127 +147,142 @@ class SearchPageView extends GetView<SearchPageController> {
                 // })
                 // Show text json
                 // Show search result in getbuilder
+
+                const SizedBox(
+                  height: 20,
+                ),
                 GetBuilder<SearchPageController>(
                   init: controller,
                   builder: (_) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.7,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: controller.searchResult.length,
-                        itemBuilder: (context, index) => Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Get.toNamed(Routes.DETAIL_MOVIE,
-
-                                        // Get Id Movie
-                                        arguments:
-                                            controller.searchResult[index].id);
-                                  },
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    shadowColor: Colors.black,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: FancyShimmerImage(
-                                          imageUrl:
-                                              'https://image.tmdb.org/t/p/w500/${controller.searchResult[index].posterPath}',
-                                          width: 200,
-                                          height: 300,
-                                          boxFit: BoxFit.cover),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                      child: controller.isLoading.value
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                  color: Colors.amber),
+                            )
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: controller.searchResult.length,
+                              itemBuilder: (context, index) => Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const SizedBox(
-                                        height: 25.0,
-                                      ),
-                                      Text(
-                                        controller.searchResult[index].title,
-                                        textAlign: TextAlign.left,
-                                        style: const TextStyle(
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.bold,
+                                      InkWell(
+                                        onTap: () {
+                                          Get.toNamed(Routes.DETAIL_MOVIE,
+
+                                              // Get Id Movie
+                                              arguments: controller
+                                                  .searchResult[index].id);
+                                        },
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          shadowColor: Colors.black,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: FancyShimmerImage(
+                                                imageUrl:
+                                                    'https://image.tmdb.org/t/p/w500/${controller.searchResult[index].posterPath}',
+                                                width: 200,
+                                                height: 300,
+                                                boxFit: BoxFit.cover),
+                                          ),
                                         ),
                                       ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            color: ratingBintang,
-                                            size: 30,
-                                          ),
-                                          const SizedBox(
-                                            width: 5.0,
-                                          ),
-                                          Text(
-                                            '${controller.searchResult[index].voteAverage.toStringAsFixed(1)} / 10 IMDb',
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w200,
-                                            ),
-                                          ),
-                                        ],
+                                      const SizedBox(
+                                        width: 12,
                                       ),
-                                      Row(
-                                        children: [
-                                          // Calendar icon
-                                          const Icon(
-                                            Icons.calendar_month,
-                                            color: Colors.grey,
-                                            size: 30,
-                                          ),
-                                          const SizedBox(
-                                            width: 5.0,
-                                          ),
-
-                                          SizedBox(
-                                            width: 150,
-                                            child: Text(
-                                              DateFormat('dd MMMM yyyy').format(
-                                                DateTime.parse(controller
-                                                    .searchResult[index]
-                                                    .releaseDate
-                                                    .toString()),
-                                              ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 25.0,
+                                            ),
+                                            Text(
+                                              controller
+                                                  .searchResult[index].title,
+                                              textAlign: TextAlign.left,
                                               style: const TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w400,
+                                                fontSize: 28,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.star,
+                                                  color: ratingBintang,
+                                                  size: 30,
+                                                ),
+                                                const SizedBox(
+                                                  width: 5.0,
+                                                ),
+                                                Text(
+                                                  '${controller.searchResult[index].voteAverage.toStringAsFixed(1)} / 10 IMDb',
+                                                  style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w200,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                // Calendar icon
+                                                const Icon(
+                                                  Icons.calendar_month,
+                                                  color: Colors.grey,
+                                                  size: 30,
+                                                ),
+                                                const SizedBox(
+                                                  width: 5.0,
+                                                ),
+
+                                                SizedBox(
+                                                  width: 150,
+                                                  child: Text(
+                                                    DateFormat('dd MMMM yyyy')
+                                                        .format(
+                                                      DateTime.parse(controller
+                                                          .searchResult[index]
+                                                          .releaseDate
+                                                          .toString()),
+                                                    ),
+                                                    style: const TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                ],
+                              ),
                             ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                          ],
-                        ),
-                      ),
                     ),
                   ),
                 ),

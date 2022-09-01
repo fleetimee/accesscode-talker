@@ -62,6 +62,8 @@ class SearchPageController extends GetxController {
 
     searchResult = hasil!;
 
+    isLoading.value = false;
+
     update();
   }
 

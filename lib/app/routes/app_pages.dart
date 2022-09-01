@@ -41,6 +41,7 @@ class AppPages {
       name: _Paths.SEARCH_PAGE,
       page: () => const SearchPageView(),
       binding: SearchPageBinding(),
+      transition: Transition.cupertino,
     ),
   ];
 }
