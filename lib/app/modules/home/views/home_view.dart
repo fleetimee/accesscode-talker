@@ -28,7 +28,7 @@ class HomeView extends GetView<HomeController> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              Get.toNamed('/search');
+              Get.toNamed(Routes.SEARCH_PAGE);
             },
           ),
         ],
@@ -51,7 +51,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      primary: Colors.blueGrey,
+                      foregroundColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12), // <-- Radius
                       ),
@@ -80,7 +80,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      primary: Colors.blueGrey,
+                      foregroundColor: Colors.blueGrey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12), // <-- Radius
                       ),

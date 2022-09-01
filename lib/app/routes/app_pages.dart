@@ -6,6 +6,8 @@ import '../modules/detail_person/bindings/detail_person_binding.dart';
 import '../modules/detail_person/views/detail_person_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/search_page/bindings/search_page_binding.dart';
+import '../modules/search_page/views/search_page_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -34,6 +36,11 @@ class AppPages {
       page: () => DetailPersonView(),
       binding: DetailPersonBinding(),
       transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: _Paths.SEARCH_PAGE,
+      page: () => const SearchPageView(),
+      binding: SearchPageBinding(),
     ),
   ];
 }

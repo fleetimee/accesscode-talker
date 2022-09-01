@@ -31,9 +31,9 @@ class PersonDetails {
   List<String>? alsoKnownAs;
   String? biography;
   DateTime? birthday;
-  dynamic? deathday;
+  dynamic deathday;
   int? gender;
-  dynamic? homepage;
+  dynamic homepage;
   int? id;
   String? imdbId;
   String? knownForDepartment;

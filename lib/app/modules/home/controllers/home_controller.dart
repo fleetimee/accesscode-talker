@@ -1,3 +1,4 @@
+import 'package:fleetime/app/models/search.dart';
 import 'package:fleetime/app/models/trending.dart';
 import 'package:fleetime/app/services/now_playing_services,.dart';
 import 'package:fleetime/app/services/trending_services.dart';
@@ -39,7 +40,18 @@ class HomeController extends GetxController {
     update();
   }
 
+  // void search(String movieName) async {
+  //   final api = await SearchServices().searchMovie(movieName);
+  //   final listResult = api;
+  //   searchResult = listResult;
+  //   update();
+  // }
+
   List trendingMoviews = <Results>[].obs;
 
   List nowPlayingMovies = <Results>[].obs;
+
+  List searchResult = <Search>[].obs;
+
+  List<Search> fetchModel = [];
 }

@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../controllers/detail_movie_controller.dart';
 
@@ -22,14 +21,6 @@ class DetailMovieView extends GetView<DetailMovieController> {
   final id = Get.arguments;
 
   List<Widget> genres = [];
-
-  final YoutubePlayerController _controller = YoutubePlayerController(
-    flags: const YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-    initialVideoId: '',
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -470,20 +461,68 @@ class DetailMovieView extends GetView<DetailMovieController> {
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: FancyShimmerImage(
-                                                    imageUrl:
-                                                        'https://img.youtube.com/vi/${snapshot.data.results[index].key}/0.jpg',
-                                                    width: 500,
-                                                    height: 200,
-                                                    boxFit: BoxFit.cover,
-                                                    errorWidget:
-                                                        FancyShimmerImage(
-                                                      imageUrl:
-                                                          'https://i.pinimg.com/474x/56/51/92/565192fc7848fbb8abd85136497a095b.jpg',
-                                                      width: 150,
-                                                      height: 150,
-                                                      boxFit: BoxFit.cover,
-                                                    ),
+                                                  child: Column(
+                                                    children: [
+                                                      Stack(
+                                                        children: [
+                                                          FancyShimmerImage(
+                                                            imageUrl:
+                                                                'https://img.youtube.com/vi/${snapshot.data.results[index].key}/0.jpg',
+                                                            width: 500,
+                                                            height: 200,
+                                                            boxFit:
+                                                                BoxFit.cover,
+                                                            errorWidget:
+                                                                FancyShimmerImage(
+                                                              imageUrl:
+                                                                  'https://i.pinimg.com/474x/56/51/92/565192fc7848fbb8abd85136497a095b.jpg',
+                                                              width: 150,
+                                                              height: 150,
+                                                              boxFit:
+                                                                  BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                          // Make play button
+                                                          Positioned(
+                                                            top: 75,
+                                                            right: 175,
+                                                            child: Container(
+                                                              width: 50,
+                                                              height: 50,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Colors
+                                                                    .white,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            500),
+                                                              ),
+                                                              child: const Icon(
+                                                                Icons
+                                                                    .play_arrow,
+                                                                color:
+                                                                    Colors.red,
+                                                                size: 30,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text(
+                                                        '${snapshot.data.results[index].name}',
+                                                        style: const TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                        ),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
