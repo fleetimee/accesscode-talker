@@ -14,21 +14,12 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  final count = 0.obs;
-
-  void increment() => count.value++;
-
   void fetchTrending() async {
     isTrendingLoading.value = true;
-
     final api = await TrendingServices().fetchTrending();
-
     final listResult = api.results;
-
     trendingMoviews = listResult!;
-
     isTrendingLoading.value = false;
-
     update();
   }
 
@@ -40,18 +31,8 @@ class HomeController extends GetxController {
     update();
   }
 
-  // void search(String movieName) async {
-  //   final api = await SearchServices().searchMovie(movieName);
-  //   final listResult = api;
-  //   searchResult = listResult;
-  //   update();
-  // }
-
   List trendingMoviews = <Results>[].obs;
-
   List nowPlayingMovies = <Results>[].obs;
-
   List searchResult = <Search>[].obs;
-
   List<Search> fetchModel = [];
 }
