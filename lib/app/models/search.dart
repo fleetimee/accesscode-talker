@@ -104,4 +104,4 @@ class Result {
       };
 }
 
-enum OriginalLanguage { EN }
+enum OriginalLanguage { en }
