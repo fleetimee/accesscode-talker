@@ -95,7 +95,7 @@ Pastikan sudah menginstall Git dan Flutter pada environment kalian.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/fleetimee/neo-claudius.git
+   git clone https://github.com/fleetimee/accesscode-talker.git
    ```
 2. Install the dependencies
    ```sh
