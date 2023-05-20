@@ -3,29 +3,29 @@ version: 1.0.0+1
 publish_to: none
 description: Projek membuat aplikasi movie dengan state management GetX.
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   empty_widget: ^0.0.5
   fancy_shimmer_image: ^2.0.2
   flutter:
     sdk: flutter
-  flutter_launcher_icons: ^0.10.0
-  flutter_native_splash: ^2.2.8
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.0
   get: 4.6.5
-  google_fonts: ^3.0.1
-  http: ^0.13.5
-  intl: ^0.17.0
-  modal_bottom_sheet: ^2.1.0
+  google_fonts: ^4.0.4
+  http: ^0.13.6
+  intl: any
+  modal_bottom_sheet: ^3.0.0-pre
   readmore: ^2.2.0
   responsive_framework: ^0.2.0
-  search_page: ^2.0.0+1
-  url_launcher: ^6.1.5
-  youtube_player_flutter: ^8.1.0
+  search_page: ^2.3.0
+  url_launcher: ^6.1.11
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 

@@ -12,19 +12,19 @@ final textStyle = TextStyle(
     //fontFamily: GoogleFonts.poppinsTextTheme().headline6.fontFamily,
     fontFamily: GoogleFonts.poppins().fontFamily);
 final textTheme = TextTheme(
-  headline1: textStyle,
-  headline2: textStyle,
-  headline3: textStyle,
-  headline4: textStyle,
-  headline5: textStyle,
-  headline6: textStyle,
-  subtitle1: textStyle,
-  subtitle2: textStyle,
-  bodyText1: textStyle,
-  bodyText2: textStyle,
-  caption: textStyle,
-  button: textStyle,
-  overline: textStyle,
+  displayLarge: textStyle,
+  displayMedium: textStyle,
+  displaySmall: textStyle,
+  headlineMedium: textStyle,
+  headlineSmall: textStyle,
+  titleLarge: textStyle,
+  titleMedium: textStyle,
+  titleSmall: textStyle,
+  bodyLarge: textStyle,
+  bodyMedium: textStyle,
+  bodySmall: textStyle,
+  labelLarge: textStyle,
+  labelSmall: textStyle,
 );
 
 ThemeData darkTheme = ThemeData(
