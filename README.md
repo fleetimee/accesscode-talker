@@ -7,7 +7,7 @@
     <img src="https://user-images.githubusercontent.com/45744788/187867110-d8e48200-7518-4695-a6b1-13e30b42657e.png" alt="Logo" width="250" height="250">
   </a>
 
-  <h3 align="center">Fleetime 🏃‍♂️⌛</h3>
+  <h3 align="center">Fleetime 🏃‍♂️⌛ hehe</h3>
 
   <p align="center">
     Fleetime merupakan aplikasi untuk melihat film - film yang sedang populer atau biasanya disebut Movie App, aplikasi ini dilombakan untuk mengikuti Mini Project Movie App yang diadakan oleh <a href="#apa-itu-fugi-">FUGI</a>.
